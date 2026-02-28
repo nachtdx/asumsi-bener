@@ -24,7 +24,6 @@
         }
 
         /* ================= NAVY HERO ================= */
-
         .hero-section {
             background: linear-gradient(135deg, #0B1026, #1A1F3A);
             color: white;
@@ -54,23 +53,24 @@
         }
 
         /* ================= WHITE MAIN ================= */
-
         .main-content {
             background: #ffffff;
             margin-top: -40px;
-            border-radius: 30px 30px 0 0;
-            padding-top: 60px;
+            border-radius: 40px 40px 0 0;
+            padding: 60px 0 40px 0;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
         }
 
         /* ================= TOOL CARDS ================= */
-
         .tool-card {
             background: #111633;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.05);
             border-radius: 16px;
             padding: 1.8rem 1.5rem;
             transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -79,12 +79,14 @@
 
         .tool-card:hover {
             transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             border-color: #FFD700;
         }
 
         .tool-card.active {
             border-color: #FFD700;
             background: #151b3f;
+            box-shadow: 0 0 0 2px rgba(255,215,0,0.3);
         }
 
         .tool-icon {
@@ -97,6 +99,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 700;
+            color: white;
         }
 
         .tool-name {
@@ -115,7 +118,9 @@
             padding: 0.3rem 1rem;
             border-radius: 20px;
             font-size: 0.75rem;
+            font-weight: 500;
             margin-bottom: 1rem;
+            align-self: flex-start;
         }
 
         .status-dev {
@@ -126,7 +131,9 @@
             padding: 0.3rem 1rem;
             border-radius: 20px;
             font-size: 0.75rem;
+            font-weight: 500;
             margin-bottom: 1rem;
+            align-self: flex-start;
         }
 
         .status-soon {
@@ -137,7 +144,9 @@
             padding: 0.3rem 1rem;
             border-radius: 20px;
             font-size: 0.75rem;
+            font-weight: 500;
             margin-bottom: 1rem;
+            align-self: flex-start;
         }
 
         .tool-description {
@@ -145,16 +154,34 @@
             font-size: 0.9rem;
             line-height: 1.6;
             flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-message {
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px dashed rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            background: rgba(0,0,0,0.2);
         }
 
         .tool-link {
             color: #FFD700;
             text-decoration: none;
-            margin-top: 1rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             transition: 0.3s;
+            font-weight: 500;
+            margin-top: auto;
         }
 
         .tool-link:hover {
@@ -165,15 +192,16 @@
         .tool-link.disabled {
             color: rgba(255,255,255,0.3);
             pointer-events: none;
+            cursor: default;
         }
 
         /* ================= FOOTER ================= */
-
         .footer {
             margin-top: 4rem;
-            padding: 3rem 0;
+            padding: 2rem 0;
             text-align: center;
             color: #666;
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
         .footer-divider {
@@ -190,15 +218,21 @@
         }
 
         .footer a:hover { text-decoration: underline; }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+            .navbar-brand { font-size: 1.6rem; }
+            .tagline { font-size: 0.9rem; }
+            .page-title { font-size: 2.2rem; }
+            .main-content { margin-top: -20px; border-radius: 20px 20px 0 0; }
+        }
     </style>
 </head>
 
 <body>
 
-<!-- ================= HERO ================= -->
-
+<!-- ================= NAVY HERO SECTION ================= -->
 <div class="hero-section">
-
     <nav class="navbar navbar-dark px-4 py-3">
         <div class="container-fluid">
             <span class="navbar-brand">
@@ -210,22 +244,19 @@
 
     <div class="container py-5">
         <h1 class="page-title display-4">Engineering Tools Suite</h1>
-        <p class="opacity-75">
+        <p class="opacity-75 fs-5">
             <i class="fas fa-tools me-2"></i>
-            Making calculations less painful
+            Making calculations less painful, one tool at a time
         </p>
     </div>
-
 </div>
 
-<!-- ================= MAIN ================= -->
-
+<!-- ================= WHITE MAIN CONTENT ================= -->
 <div class="main-content">
     <div class="container">
-
+        <!-- Tools Grid - 8 columns -->
         <div class="row g-4">
-
-            <!-- PC-SVT -->
+            <!-- 1. PC-SVT (Ready) -->
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="tool-card active">
                     <div class="tool-icon"><i class="fas fa-flask"></i></div>
@@ -233,15 +264,15 @@
                     <div class="tool-name">Ponchon-Savarit</div>
                     <div class="status-ready"><i class="fas fa-check-circle me-1"></i> Ready</div>
                     <div class="tool-description">
-                        Complete Ponchon-Savarit diagram analysis with support for multiple binary systems.
+                        Complete Ponchon-Savarit diagram analysis with support for Ethanol-Water and Ammonia-Water systems in British units.
                     </div>
-                    <a href="https://nachtdx.github.io/proto-pc-svt/" target="_blank" class="tool-link">
+                    <a href="https://nachtdx.github.io/proto-pc-svt/" class="tool-link" target="_blank">
                         Launch Tool <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- MCT -->
+            <!-- 2. MCT (Under Development) -->
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
@@ -249,29 +280,110 @@
                     <div class="tool-name">McCabe-Thiele</div>
                     <div class="status-dev"><i class="fas fa-code-branch me-1"></i> Under Development</div>
                     <div class="tool-description">
-                        Graphical method for binary distillation analysis.
+                        Graphical method for binary distillation analysis. Coming soon with multiple equilibrium models.
                     </div>
-                    <span class="tool-link disabled">
-                        <i class="fas fa-hourglass-half me-1"></i> In Progress
-                    </span>
+                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> In Progress</span>
                 </div>
             </div>
 
+            <!-- 3. Coming Soon -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
+                    <div class="tool-acronym">???</div>
+                    <div class="tool-name">Mystery Tool</div>
+                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
+                    <div class="coming-soon-message">
+                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
+                    </div>
+                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
+                </div>
+            </div>
+
+            <!-- 4. Coming Soon -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
+                    <div class="tool-acronym">???</div>
+                    <div class="tool-name">Mystery Tool</div>
+                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
+                    <div class="coming-soon-message">
+                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
+                    </div>
+                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
+                </div>
+            </div>
+
+            <!-- 5. Coming Soon -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
+                    <div class="tool-acronym">???</div>
+                    <div class="tool-name">Mystery Tool</div>
+                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
+                    <div class="coming-soon-message">
+                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
+                    </div>
+                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
+                </div>
+            </div>
+
+            <!-- 6. Coming Soon -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
+                    <div class="tool-acronym">???</div>
+                    <div class="tool-name">Mystery Tool</div>
+                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
+                    <div class="coming-soon-message">
+                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
+                    </div>
+                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
+                </div>
+            </div>
+
+            <!-- 7. Coming Soon -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
+                    <div class="tool-acronym">???</div>
+                    <div class="tool-name">Mystery Tool</div>
+                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
+                    <div class="coming-soon-message">
+                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
+                    </div>
+                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
+                </div>
+            </div>
+
+            <!-- 8. Coming Soon -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
+                    <div class="tool-acronym">???</div>
+                    <div class="tool-name">Mystery Tool</div>
+                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
+                    <div class="coming-soon-message">
+                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
+                    </div>
+                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
+                </div>
+            </div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
             <div class="footer-divider"></div>
             <p>
-                Developed under <strong>DR & NDZ (2022)</strong> for educational purposes only.
-                Contact:
+                These tools were developed under <strong>DR & NDZ (2022)</strong> for educational purposes only.
+                For any issues, errors, or inquiries, please contact:
                 <a href="mailto:dafiqruli10@gmail.com">dafiqruli10@gmail.com</a>
             </p>
             <p class="small opacity-50 mt-3">
-                Version 1.0.0 | © 2026 AsumsiBenar
+                <i class="fas fa-code-branch me-1"></i> Version 1.0.0 |
+                <i class="fas fa-copyright me-1"></i> 2026 AsumsiBenar
             </p>
         </div>
-
     </div>
 </div>
 
