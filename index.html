@@ -2,158 +2,203 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AsumsiBenar - Engineering Tools</title>
-    
-    <!-- Bootstrap CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Montserrat', sans-serif; 
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        /* ================= NAVY HERO ================= */
+
+        .hero-section {
             background: linear-gradient(135deg, #0B1026, #1A1F3A);
-            min-height: 100vh;
             color: white;
+            padding-bottom: 3rem;
         }
-        .navbar-brand { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 2rem; 
-            font-weight: 800; 
-            color: white !important; 
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white !important;
         }
+
         .brand-highlight { color: #FFD700; }
-        .tagline { 
-            font-family: 'Playfair Display', serif; 
-            font-style: italic; 
-            color: rgba(255,255,255,0.7); 
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
             border-left: 2px solid rgba(255,215,0,0.3);
         }
-        .page-title { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 700; 
-            color: white; 
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: white;
         }
-        .tool-card { 
-            background: rgba(26, 31, 58, 0.7); 
-            border: 1px solid rgba(255,255,255,0.05); 
-            border-radius: 16px; 
-            padding: 1.8rem 1.5rem; 
+
+        /* ================= WHITE MAIN ================= */
+
+        .main-content {
+            background: #ffffff;
+            margin-top: -40px;
+            border-radius: 30px 30px 0 0;
+            padding-top: 60px;
+        }
+
+        /* ================= TOOL CARDS ================= */
+
+        .tool-card {
+            background: #111633;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 16px;
+            padding: 1.8rem 1.5rem;
             transition: 0.3s;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             height: 100%;
             display: flex;
             flex-direction: column;
+            color: white;
         }
-        .tool-card:hover { 
-            transform: translateY(-5px); 
-            border-color: rgba(255,215,0,0.3);
+
+        .tool-card:hover {
+            transform: translateY(-6px);
+            border-color: #FFD700;
         }
-        .tool-card.active { border-color: #FFD700; background: rgba(45,55,90,0.8); }
-        .tool-icon { font-size: 2.5rem; color: #FFD700; margin-bottom: 1rem; }
-        .tool-acronym { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.8rem; 
-            font-weight: 700; 
-            color: white; 
+
+        .tool-card.active {
+            border-color: #FFD700;
+            background: #151b3f;
         }
-        .tool-name { 
-            color: rgba(255,255,255,0.6); 
-            text-transform: uppercase; 
-            font-size: 0.9rem;
+
+        .tool-icon {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .tool-acronym {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .tool-name {
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            font-size: 0.85rem;
             letter-spacing: 1px;
             margin-bottom: 1rem;
         }
-        .status-soon { 
-            display: inline-block; 
-            padding: 0.3rem 1rem; 
-            background: rgba(255,255,255,0.1); 
-            color: rgba(255,255,255,0.7);
-            border-radius: 20px; 
-            font-size: 0.8rem; 
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 1rem;
-            align-self: flex-start;
-        }
-        .status-ready { 
-            background: rgba(0,200,0,0.15); 
-            color: #90EE90; 
+
+        .status-ready {
+            background: rgba(0,200,0,0.15);
+            color: #90EE90;
             border: 1px solid rgba(144,238,144,0.3);
-            display: inline-block; 
-            padding: 0.3rem 1rem; 
-            border-radius: 20px; 
-            font-size: 0.8rem;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             margin-bottom: 1rem;
-            align-self: flex-start;
         }
-        .status-dev { 
-            background: rgba(255,193,7,0.15); 
-            color: #FFD700; 
+
+        .status-dev {
+            background: rgba(255,193,7,0.15);
+            color: #FFD700;
             border: 1px solid rgba(255,215,0,0.3);
-            display: inline-block; 
-            padding: 0.3rem 1rem; 
-            border-radius: 20px; 
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-            align-self: flex-start;
-        }
-        .tool-description { 
-            color: rgba(255,255,255,0.7); 
-            font-size: 0.9rem; 
-            line-height: 1.6; 
-            flex-grow: 1;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             margin-bottom: 1rem;
         }
-        .tool-link { 
-            color: #FFD700; 
-            text-decoration: none; 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 0.5rem;
-            transition: gap 0.3s;
-            margin-top: auto;
+
+        .status-soon {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
         }
-        .tool-link:hover { gap: 0.8rem; color: #FFA500; }
-        .tool-link.disabled { color: rgba(255,255,255,0.3); pointer-events: none; cursor: default; }
-        .coming-soon-message {
-            color: rgba(255,255,255,0.5);
-            font-style: italic;
+
+        .tool-description {
+            color: rgba(255,255,255,0.7);
             font-size: 0.9rem;
-            margin: 1rem 0;
+            line-height: 1.6;
             flex-grow: 1;
-            display: flex;
+        }
+
+        .tool-link {
+            color: #FFD700;
+            text-decoration: none;
+            margin-top: 1rem;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.3s;
+        }
+
+        .tool-link:hover {
+            gap: 0.8rem;
+            color: #FFA500;
+        }
+
+        .tool-link.disabled {
+            color: rgba(255,255,255,0.3);
+            pointer-events: none;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            margin-top: 4rem;
+            padding: 3rem 0;
             text-align: center;
-            border: 1px dashed rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1rem;
+            color: #666;
         }
-        .footer { 
-            margin-top: 4rem; 
-            padding: 2rem 0; 
-            border-top: 1px solid rgba(255,255,255,0.1); 
-            text-align: center; 
-            color: rgba(255,255,255,0.6);
+
+        .footer-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            margin: 1.5rem auto;
         }
-        .footer a { color: #FFD700; text-decoration: none; }
+
+        .footer a {
+            color: #0B1026;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
         .footer a:hover { text-decoration: underline; }
-        .footer-divider { 
-            width: 50px; 
-            height: 2px; 
-            background: linear-gradient(90deg, #FFD700, #FFA500); 
-            margin: 1.5rem auto; 
-        }
     </style>
 </head>
+
 <body>
-    <!-- Navbar -->
+
+<!-- ================= HERO ================= -->
+
+<div class="hero-section">
+
     <nav class="navbar navbar-dark px-4 py-3">
         <div class="container-fluid">
             <span class="navbar-brand">
@@ -163,23 +208,24 @@
         </div>
     </nav>
 
-    <!-- Main Content - Scrollable -->
-    <div class="container py-5" style="min-height: calc(100vh - 160px);">
-        <!-- Header -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <h1 class="page-title display-4">Engineering Tools Suite</h1>
-                <p class="text-light-emphasis opacity-75">
-                    <i class="fas fa-tools me-2"></i>
-                    Making calculations less painful
-                </p>
-                <hr class="opacity-25">
-            </div>
-        </div>
+    <div class="container py-5">
+        <h1 class="page-title display-4">Engineering Tools Suite</h1>
+        <p class="opacity-75">
+            <i class="fas fa-tools me-2"></i>
+            Making calculations less painful
+        </p>
+    </div>
 
-        <!-- Tools Grid (8 kolom) -->
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main-content">
+    <div class="container">
+
         <div class="row g-4">
-            <!-- PC-SVT (Active) -->
+
+            <!-- PC-SVT -->
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="tool-card active">
                     <div class="tool-icon"><i class="fas fa-flask"></i></div>
@@ -187,15 +233,15 @@
                     <div class="tool-name">Ponchon-Savarit</div>
                     <div class="status-ready"><i class="fas fa-check-circle me-1"></i> Ready</div>
                     <div class="tool-description">
-                        Complete Ponchon-Savarit diagram analysis with support for multiple binary systems in British units.
+                        Complete Ponchon-Savarit diagram analysis with support for multiple binary systems.
                     </div>
-                    <a href="https://nachtdx.github.io/proto-pc-svt/" class="tool-link" target="_blank">
+                    <a href="https://nachtdx.github.io/proto-pc-svt/" target="_blank" class="tool-link">
                         Launch Tool <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- MCT (Under Development) -->
+            <!-- MCT -->
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="tool-card">
                     <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
@@ -203,107 +249,31 @@
                     <div class="tool-name">McCabe-Thiele</div>
                     <div class="status-dev"><i class="fas fa-code-branch me-1"></i> Under Development</div>
                     <div class="tool-description">
-                        Graphical method for binary distillation analysis. Coming soon with multiple equilibrium models.
+                        Graphical method for binary distillation analysis.
                     </div>
-                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> In Progress</span>
+                    <span class="tool-link disabled">
+                        <i class="fas fa-hourglass-half me-1"></i> In Progress
+                    </span>
                 </div>
             </div>
 
-            <!-- Interesting Tools are Coming (6 kolom) -->
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
-                    <div class="tool-acronym">???</div>
-                    <div class="tool-name">Mystery Tool</div>
-                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
-                    <div class="coming-soon-message">
-                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
-                    </div>
-                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
-                    <div class="tool-acronym">???</div>
-                    <div class="tool-name">Mystery Tool</div>
-                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
-                    <div class="coming-soon-message">
-                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
-                    </div>
-                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
-                    <div class="tool-acronym">???</div>
-                    <div class="tool-name">Mystery Tool</div>
-                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
-                    <div class="coming-soon-message">
-                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
-                    </div>
-                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
-                    <div class="tool-acronym">???</div>
-                    <div class="tool-name">Mystery Tool</div>
-                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
-                    <div class="coming-soon-message">
-                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
-                    </div>
-                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
-                    <div class="tool-acronym">???</div>
-                    <div class="tool-name">Mystery Tool</div>
-                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
-                    <div class="coming-soon-message">
-                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
-                    </div>
-                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-gift"></i></div>
-                    <div class="tool-acronym">???</div>
-                    <div class="tool-name">Mystery Tool</div>
-                    <div class="status-soon"><i class="fas fa-clock me-1"></i> Coming Soon</div>
-                    <div class="coming-soon-message">
-                        <i class="fas fa-sparkles me-2"></i> Interesting Tools are Coming
-                    </div>
-                    <span class="tool-link disabled"><i class="fas fa-hourglass-half me-1"></i> Stay Tuned</span>
-                </div>
-            </div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
             <div class="footer-divider"></div>
             <p>
-                These tools were developed under <strong>DR & NDZ (2022)</strong> for educational purposes only. 
-                For any issues, errors, or inquiries, please contact: 
+                Developed under <strong>DR & NDZ (2022)</strong> for educational purposes only.
+                Contact:
                 <a href="mailto:dafiqruli10@gmail.com">dafiqruli10@gmail.com</a>
             </p>
-            <p class="mt-3 small opacity-50">
-                <i class="fas fa-code-branch me-1"></i> Version 1.0.0 | 
-                <i class="fas fa-copyright me-1"></i> 2026 AsumsiBenar
+            <p class="small opacity-50 mt-3">
+                Version 1.0.0 | © 2026 AsumsiBenar
             </p>
         </div>
+
     </div>
+</div>
+
 </body>
-
 </html>
-
